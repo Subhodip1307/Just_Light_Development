@@ -3,13 +3,12 @@ from urllib.parse import parse_qs
 from .request import Request
 
 class JustLightDevelopment:
-    def __init__(self, templates_dir="templates"):
+    def __init__(self):
         self.routes = {}
 
-    def route(self, path, methods=["GET"]):
+    def route(self, path):
         def decorator(func):
-            for method in methods:
-                self.routes[(path, method)] = func
+            self.routes[path] = func
             return func
         return decorator
 
@@ -21,10 +20,9 @@ class JustLightDevelopment:
             message = await receive()
             body += message.get('body', b'')
             more_body = message.get('more_body', False)
-
         request = Request(scope, body)
 
-        handler = self.routes.get((request.path, request.method))
+        handler = self.routes.get(request.path)
         if handler:
             response_body = await handler(request)
             await send({
