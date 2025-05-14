@@ -1,15 +1,18 @@
 from jld import Template
-from jld import app
+from jld import APP
+from jld.responce import JSONResponse,HTTPResponse
+
 render=Template()
 
 
-app=app()
+app=APP()
+
 @app.route("/", methods=["GET"])
 async def home(request):
-    return render.render("index.html",{"hi":"2323"})
+    # return await render.render("index.html",{"hi":"2323"})
+    return JSONResponse({"hexi":"hello"})
 
-@app.route("/submit", methods=["POST"])
+@app.route("/haha", methods=["GET"])
 async def submit(request):
     print(request.method)
-    name = request.POST.get("name", "Stranger")
-    return render.render("result.html", {"name": "name"})
+    return await render.render("result.html", {"name": "name"})

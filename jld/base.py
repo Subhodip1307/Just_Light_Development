@@ -1,5 +1,4 @@
 import asyncio
-from urllib.parse import parse_qs
 from .request import Request
 
 class JustLightDevelopment:
@@ -21,20 +20,19 @@ class JustLightDevelopment:
             message = await receive()
             body += message.get('body', b'')
             more_body = message.get('more_body', False)
-
         request = Request(scope, body)
-
         handler = self.routes.get((request.path, request.method))
+
         if handler:
-            response_body = await handler(request)
+            response = await handler(request)
             await send({
                 'type': 'http.response.start',
-                'status': 200,
-                'headers': [(b'content-type', b'text/html')],
+                'status': response.status,
+                'headers': response.headers,
             })
             await send({
                 'type': 'http.response.body',
-                'body': response_body.encode(),
+                'body': response.content,
             })
         else:
             await send({
