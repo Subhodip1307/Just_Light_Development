@@ -14,6 +14,32 @@ Just Light Development (JLD) is a custom asynchronous Python web framework built
 
 ---
 
+> ⚠️ **EXPERIMENTAL PROJECT – NOT FOR PRODUCTION USE**
+
+This repository is an **experimental / research project** created for learning, testing ideas, and proof-of-concept work.
+
+### ❗ Important Notice
+- This project is **NOT production-ready**
+- Security, stability, performance, and backward compatibility are **NOT guaranteed**
+- There may be **critical bugs, incomplete features, or unsafe defaults**
+
+### 🚫 Do NOT use this project:
+- In production environments
+- In systems requiring high availability or security guarantees
+
+### ✅ Intended Use
+- Learning and experimentation
+- Prototyping
+- Personal or educational projects
+- Research and exploration
+
+---
+
+**Status:** Experimental  
+**Maintenance:** Best-effort  
+**Stability:** Unstable
+
+
 ## 📚 Table of Contents
 
 - [Getting Started](#getting-started)
@@ -126,3 +152,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 Thank you for using Just Light Development! 🌟
+
